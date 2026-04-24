@@ -2,7 +2,7 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #000000;
 }
 
 @theme inline {
@@ -12,15 +12,62 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.site-header .site-header-nav-link {
+  font-size: 1.20rem;
+  font-weight: 500;
+  line-height: 4.4rem;
+}
+
+.site-header .site-header-cta {
+  position: relative;
+}
+
+.site-header .site-header-cta-label {
+  position: relative;
+}
+
+.site-header .site-header-cta-label::before,
+.site-header .site-header-cta-label::after {
+  content: "";
+  position: absolute;
+  top: calc(100% + 2px);
+  width: 50%;
+  height: 2px;
+  background-color: currentColor;
+  opacity: 0;
+  transform: scaleX(0);
+  transition:
+    transform 520ms cubic-bezier(0.22, 1, 0.36, 1) 120ms,
+    opacity 180ms ease-out 120ms;
+  will-change: transform, opacity;
+}
+
+.site-header .site-header-cta-label::before {
+  left: 0;
+  transform-origin: right center;
+}
+
+.site-header .site-header-cta-label::after {
+  right: 0;
+  transform-origin: left center;
+  bottom: -2px;
+}
+
+.site-header .site-header-cta:hover .site-header-cta-label::before,
+.site-header .site-header-cta:hover .site-header-cta-label::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header .site-header-cta-label::after {
+    transition: none;
+    animation: none;
+  }
 }
