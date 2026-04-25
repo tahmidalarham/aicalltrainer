@@ -25,11 +25,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const navItems = [
-    { href: "/simulation", label: "Simulators" },
-    { href: "/features", label: "How It Works" },
+    { href: "/simulators", label: "Simulators" },
+    { href: "/how-it-works", label: "How It Works" },
     { href: "/pricing", label: "Pricing" },
     { href: "/dashboard", label: "Dashboard" },
-    { href: "/contact", label: "Sign in" },
+    { href: "/sign-in", label: "Sign in" },
   ];
 
   return (

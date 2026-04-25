@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #000000;
@@ -10,6 +16,25 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+}
+
+@keyframes rotate-border {
+  to { transform: rotate(360deg); }
+}
+
+.spinning-border-wrapper {
+  position: relative;
+  display: inline-flex;
+  border-radius: 0.5rem;
+  padding: 2px;
+  overflow: hidden;
+}
+
+.spinning-border-track {
+  position: absolute;
+  inset: -100%;
+  background: conic-gradient(transparent 75%, #f59e0b 90%, #fbbf24 95%, transparent 100%);
+  animation: rotate-border 2s linear infinite;
 }
 
 body {
@@ -24,50 +49,8 @@ body {
   line-height: 4.4rem;
 }
 
-.site-header .site-header-cta {
-  position: relative;
-}
-
-.site-header .site-header-cta-label {
-  position: relative;
-}
-
-.site-header .site-header-cta-label::before,
-.site-header .site-header-cta-label::after {
-  content: "";
-  position: absolute;
-  top: calc(100% + 2px);
-  width: 50%;
-  height: 2px;
-  background-color: currentColor;
-  opacity: 0;
-  transform: scaleX(0);
-  transition:
-    transform 520ms cubic-bezier(0.22, 1, 0.36, 1) 120ms,
-    opacity 180ms ease-out 120ms;
-  will-change: transform, opacity;
-}
-
-.site-header .site-header-cta-label::before {
-  left: 0;
-  transform-origin: right center;
-}
-
-.site-header .site-header-cta-label::after {
-  right: 0;
-  transform-origin: left center;
-  bottom: -2px;
-}
-
-.site-header .site-header-cta:hover .site-header-cta-label::before,
-.site-header .site-header-cta:hover .site-header-cta-label::after {
-  opacity: 1;
-  transform: scaleX(1);
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .site-header .site-header-cta-label::after {
-    transition: none;
+  .spinning-border {
     animation: none;
   }
 }
