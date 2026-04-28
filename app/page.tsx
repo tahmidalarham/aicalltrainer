@@ -16,12 +16,19 @@ export default function Home() {
           objection handling, perfect your pitch, and build the muscle memory
           needed to close the hardest deals in your pipeline.
         </p>
+        <div className="hidden lg:inline-flex">
+          <div className="spinning-border-wrapper">
+           <div className="spinning-border-track" />
+            <div className="relative z-5 rounded-md bg-white p-[3px]">
         <Link
           href="/simulators"
-          className="mt-8 inline-flex rounded-md bg-amber-500 px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-amber-600"
+          className="inline-flex rounded-md bg-amber-500 px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-amber-600"
         >
           Practice Your First Call
         </Link>
+        </div>
+        </div>
+        </div>
         <Link
         href="sign-in"
         className="mt-8 inline-flex rounded-md underline text-black  px-6 py-3 tranisition delay-50 duration-200 ease-in-out hover:-translate-y-0.5 hover: scale-100 "
